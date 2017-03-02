@@ -1,0 +1,42 @@
+{
+    "name": "stylemepretty-pwa",
+    "version": "1.0.0",
+    "description": "A progressive web app for Style Me Pretty",
+    "main": "index.js",
+    "repository": "ssh://git@stash.ops.aol.com:2022/esp/stylemepretty-pwa.git",
+    "author": "Roman, Greg <greg.roman@teamaol.com>",
+    "license": "MIT",
+    "devDependencies": {
+        "babel-core": "^6.23.1",
+        "babel-loader": "^6.3.2",
+        "babel-plugin-transform-runtime": "^6.23.0",
+        "babel-preset-es2015": "^6.22.0",
+        "css-loader": "^0.26.2",
+        "eslint": "^3.16.1",
+        "eslint-config-airbnb-base": "^11.1.0",
+        "eslint-plugin-import": "^2.2.0",
+        "gulp": "^3.9.1",
+        "gulp-eslint": "^3.0.1",
+        "gulp-html-minifier": "^0.1.8",
+        "gulp-if": "^2.0.2",
+        "gulp-rename": "^1.2.2",
+        "gulp-uglify": "^2.0.1",
+        "require-dir": "^0.3.1",
+        "run-sequence": "^1.2.2",
+        "sw-precache": "^5.0.0",
+        "sw-toolbox": "^3.6.0",
+        "vue-template-compiler": "^2.2.1",
+        "webpack": "^2.2.1",
+        "webpack-stream": "^3.2.0"
+    },
+    "dependencies": {
+        "gulp-sass": "^3.1.0",
+        "gulp-template": "^4.0.0",
+        "jsdoc": "^3.4.3",
+        "vue": "^2.2.1",
+        "vue-doc": "^0.1.2",
+        "vue-loader": "^11.1.3",
+        "vue-resource": "^1.2.1",
+        "vue-router": "^2.3.0"
+    }
+}
