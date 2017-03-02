@@ -1,13 +1,15 @@
+import path from 'path';
 import gulp from 'gulp';
-import webpack from 'webpack-stream';
-import uglify from 'gulp-uglify';
+import webpack from 'webpack';
+import webpackStream from 'webpack-stream';
 import rename from 'gulp-rename';
 import gulpIf from 'gulp-if';
 import { scripts } from '../config';
 
-function task(debug) {
+function task(webpackPlugins) {
     return gulp.src(scripts.main)
-        .pipe(webpack({
+        .pipe(webpackStream({
+            plugins: webpackPlugins,
             module: {
                 loaders: [
                     {
@@ -18,25 +20,38 @@ function task(debug) {
                         test: /\.js$/,
                         exclude: /node_modules/,
                         loader: 'babel-loader',
-                        query: {
-                            presets: ['es2015']
-                        }
+                        include: [path.join(__dirname, '../../', scripts.src)]
                     }
                 ]
             },
+            vue: {
+              loaders: {
+                js: 'babel-loader'
+              }
+            },
             resolve: {
                 alias: {
-                    'vue$': 'vue/dist/vue.common.js'
+                    'vue$': 'vue/dist/vue.common'
                 }
             }
         }).on('error', (e) => {
             console.error(e.stack);
         }))
-        .pipe(gulpIf(!debug, uglify({ mangle: true })))
         .pipe(rename('bundle.js'))
         .pipe(gulp.dest(scripts.dest));
 };
 
-gulp.task('scripts-dev', () => task(true));
+gulp.task('scripts-dev', () => task([]));
 
-gulp.task('scripts-prod', () => task(false));
+gulp.task('scripts-prod', () => task([
+    new webpack.DefinePlugin({
+        'process.env': {
+            NODE_ENV: '"production"'
+        }
+    }),
+    new webpack.optimize.UglifyJsPlugin({
+        compress: {
+            warnings: false
+        }
+    })
+]));
