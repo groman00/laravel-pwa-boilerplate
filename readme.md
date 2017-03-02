@@ -1,4 +1,4 @@
-# Laravel Progressive Wweb App Boilerplate
+# Laravel Progressive Web App Boilerplate
 
 Replaces default Laravel frontend.  Includes [https://github.com/GoogleChrome/sw-precache](sw-precache) and [https://github.com/GoogleChrome/sw-toolbox](sw-toolbox).
 
