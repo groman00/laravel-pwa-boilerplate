@@ -13,10 +13,10 @@ Replaces default Laravel frontend.  Includes [sw-precache](https://github.com/Go
 // Install JS Dependencies
 yarn
 
-// Build dev app from /resources into /build
+// Build dev app from /resources/assets into /public
 gulp
 
-// Build prod app from /resources into /build
+// Build prod app from /resources/assets into /public
 gulp deploy
 
 // Install PHP Dependencies
